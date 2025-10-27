@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello — Indie Game Developer</title>
+  <style>
+    :root {
+      --bg: #0e0e10;
+      --text: #e0e0e0;
+      --accent: #6ef3a8;
+      --font: 'Courier New', monospace;
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+    }
+    .blink {
+      animation: blink 1.2s infinite;
+      color: var(--accent);
+    }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.3; }
+    }
+    footer {
+      position: absolute;
+      bottom: 1rem;
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello, traveler.</h1>
+  <p>This page belongs to an <span style="color: var(--accent)">indie game developer</span>.</p>
+  <p>I'm just saying hello... I wonder what's next <span class="blink">_</span></p>
+  <footer>© 2025 Wavvy Labs</footer>
+</body>
+</html>
