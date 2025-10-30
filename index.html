@@ -38,6 +38,15 @@
       animation: blink 1.2s infinite;
       color: var(--accent);
     }
+    /* make links use the accent color */
+    a, a:visited {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover, a:focus {
+      text-decoration: underline;
+      opacity: 0.95;
+    }
     @keyframes blink {
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0.3; }
@@ -52,8 +61,38 @@
 </head>
 <body>
   <h1>Hello, traveler.</h1>
-  <p>This page belongs to an <span style="color: var(--accent)">indie game developer</span>.</p>
-  <p>I'm just saying hello... I wonder what's next <span class="blink">_</span></p>
+  <p>I'm a <span style="color: var(--accent)">solo developer</span> just making games</span>.</p>
+  <p>Questions or comments? Find me at <span id="email-link">[loading]</span></p>
+  <p><span class="blink">_</span></p>
+  <noscript>
+    <p>If JavaScript is disabled, please use it.</p>
+  </noscript>
+  <section id="hiring" style="text-align:center; padding:10px; border-radius:12px;">
+    <h2>🎨 Looking for Digital Art Support</h2>
+    <p style="max-width:600px; margin:auto; font-size:1.1rem; line-height:1.6;">
+      Seeking a <strong>Digital/Pixel Artist</strong> to help redesign 
+      some of our current and upcoming small, mobile games. If you're interested, reach out 😎
+    </p>
+  </section>
+
   <footer>© 2025 Wavvy Labs</footer>
+
+  <script>
+    // Build email address from char codes to make scraping harder (address not present in raw HTML)
+    (function(){
+      var codes = [115,117,112,112,111,114,116,64,119,97,118,118,121,108,97,98,115,46,99,111,109]; // 'support@wavvylabs.com'
+      var addr = codes.map(function(c){return String.fromCharCode(c);}).join('');
+      var container = document.getElementById('email-link');
+      if(!container) return;
+      var a = document.createElement('a');
+      a.href = 'mailto:' + addr;
+      a.textContent = addr;
+      a.setAttribute('rel','noopener noreferrer');
+      a.setAttribute('aria-label','Email ' + addr);
+      // optional: add a small obfuscation for display (replace @ with text) — we show full address here
+      container.textContent = '';
+      container.appendChild(a);
+    })();
+  </script>
 </body>
 </html>
